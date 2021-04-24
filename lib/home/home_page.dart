@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_mvvm_sample/home/home_view_model.dart';
 import 'package:riverpod_mvvm_sample/pop_up/pop_up_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ScopedReader watch) {
+    final viewModel = context.read(homeViewModelProvider.notifier);
     return Scaffold(
       appBar: AppBar(
         title: Text('home page'),
@@ -18,7 +22,7 @@ class HomePage extends StatelessWidget {
           children: [
             const Text('enter text'),
             const SizedBox(height: 16),
-            TextFormField(onChanged: _onChangeText),
+            TextFormField(onChanged: viewModel.changeText),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () => _onFinish(context),
@@ -30,14 +34,8 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  void _onChangeText(String text) {}
-
   void _onFinish(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute<PopUpPage>(
-        builder: (BuildContext context) => PopUpPage(),
-      ),
-    );
+    final text = context.read(homeViewModelProvider).text;
+    Navigator.push(context, PopUpPage.createPageRoute(text));
   }
 }

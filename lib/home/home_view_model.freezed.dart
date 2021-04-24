@@ -97,7 +97,7 @@ class __$HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_HomeState extends _HomeState {
-  const _$_HomeState({this.text = ''}) : super._();
+  _$_HomeState({this.text = ''}) : super._();
 
   @JsonKey(defaultValue: '')
   @override
@@ -127,8 +127,8 @@ class _$_HomeState extends _HomeState {
 }
 
 abstract class _HomeState extends HomeState {
-  const factory _HomeState({String text}) = _$_HomeState;
-  const _HomeState._() : super._();
+  factory _HomeState({String text}) = _$_HomeState;
+  _HomeState._() : super._();
 
   @override
   String get text => throw _privateConstructorUsedError;

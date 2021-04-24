@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$PopUpStateTearOff {
   const _$PopUpStateTearOff();
 
-  _PopUpState call({String text = ''}) {
+  _PopUpState call({required String text}) {
     return _PopUpState(
       text: text,
     );
@@ -99,9 +99,8 @@ class __$PopUpStateCopyWithImpl<$Res> extends _$PopUpStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_PopUpState extends _PopUpState {
-  const _$_PopUpState({this.text = ''}) : super._();
+  _$_PopUpState({required this.text}) : super._();
 
-  @JsonKey(defaultValue: '')
   @override
   final String text;
 
@@ -129,8 +128,8 @@ class _$_PopUpState extends _PopUpState {
 }
 
 abstract class _PopUpState extends PopUpState {
-  const factory _PopUpState({String text}) = _$_PopUpState;
-  const _PopUpState._() : super._();
+  factory _PopUpState({required String text}) = _$_PopUpState;
+  _PopUpState._() : super._();
 
   @override
   String get text => throw _privateConstructorUsedError;
